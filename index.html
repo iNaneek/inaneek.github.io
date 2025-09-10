@@ -1,175 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <title>Keenan Manchester – Projects</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    :root { --bg:#0b0d10; --card:#12151a; --text:#e8edf4; --muted:#a9b3c1; --accent:#7c4dff; }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:var(--bg);color:var(--text)}
-    .wrap{max-width:1050px;margin:auto;padding:28px}
-    h1{margin:8px 0 16px;font-size:clamp(28px,4.5vw,44px)}
-    p.lead{color:var(--muted);max-width:70ch}
-    .grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:18px}
-    .card{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
-          border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px}
-    .card h3{margin:0 0 6px}
-    .meta{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
-    .tag{font-size:12px;padding:6px 9px;border-radius:999px;border:1px solid rgba(255,255,255,.15);color:#cdd6e8}
-    .links a{display:inline-block;margin-right:10px;margin-top:10px;padding:8px 12px;border-radius:10px;
-             text-decoration:none;border:1px solid rgba(255,255,255,.18);color:var(--text)}
-    .links a.primary{background:var(--accent);border-color:transparent}
-    header, footer{opacity:.85}
-    .row{display:grid;gap:18px;grid-template-columns:1.2fr .8fr;margin-top:24px}
-    @media (max-width:900px){.row{grid-template-columns:1fr}}
-    .hero{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
-          border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px}
-    .list{display:flex;flex-wrap:wrap;gap:8px}
+    :root {
+      --bg: #f9fbfd;
+      --card: #ffffff;
+      --text: #1c1f24;
+      --muted: #5a6c7c;
+      --accent: #4f8ef7;
+      --accent-light: #dce9ff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 40px 20px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: clamp(28px, 5vw, 44px);
+      color: var(--accent);
+    }
+
+    header p {
+      margin: 12px auto 0;
+      max-width: 70ch;
+      color: var(--muted);
+    }
+
+    .grid {
+      max-width: 1050px;
+      margin: 20px auto;
+      padding: 0 20px 40px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      color: var(--accent);
+    }
+
+    .card p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .tag {
+      font-size: 12px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: var(--accent-light);
+      color: var(--accent);
+    }
+
+    .links a {
+      display: inline-block;
+      margin-right: 10px;
+      margin-top: auto;
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 14px;
+      background: var(--accent);
+      color: white;
+      transition: background 0.2s;
+    }
+
+    .links a:hover {
+      background: #3b6ed6;
+    }
+
+    /* Hero cards span 2 columns */
+    .wide {
+      grid-column: span 2;
+    }
+
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .wide {
+        grid-column: span 1;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <h1>Keenan Manchester — Projects</h1>
-      <p class="lead">
-        I build reliable robots, printers, and small engines of delight. First-year at Colorado School of Mines.
-        Here are my active projects with quick outcomes and links.
-      </p>
-      <div class="list">
-        <span class="tag">Robotics</span>
-        <span class="tag">3D Printing</span>
-        <span class="tag">Embedded (RPi/Pico)</span>
-        <span class="tag">Python</span>
-        <span class="tag">DFM</span>
+  <header>
+    <h1>Keenan Manchester – Projects</h1>
+    <p>A selection of my current work in robotics, design, and software. Highlighted projects (HERC & HUNCH) get the wide feature treatment.</p>
+  </header>
+
+  <section class="grid">
+
+    <!-- Hero card: HERC Rover -->
+    <article class="card wide">
+      <img src="assets/herc-render.png" alt="HERC Rover render">
+      <h3>HERC Rover</h3>
+      <p>Lightweight portal-axle rover, dual-motor drivetrain, Python UI. Placed 3rd in NASA HERC 2025.</p>
+      <div class="meta">
+        <span class="tag">ASA/TPU</span><span class="tag">Python</span><span class="tag">Klipper</span>
       </div>
-    </header>
-
-    <section class="grid" aria-label="Projects">
-
-      <!-- 1) HERC (RC Rover) -->
-      <article class="card">
-        <h3>HERC Rover (RC Car)</h3>
-        <p>Competition rover with lightweight portal-style axles, dual-motor drivetrain, and Python control UI.</p>
-        <div class="meta">
-          <span class="tag">ASA/TPU</span><span class="tag">Python</span><span class="tag">PWM</span><span class="tag">Klipper</span>
-        </div>
-        <p><strong>My role:</strong> drivetrain & controls • <strong>Outcome:</strong> 3rd place (2025) and reliable climbs over <em>X°</em> (add stat).</p>
-        <div class="links">
-          <a class="primary" href="#">Demo / Video</a>
-          <a href="#">Repository</a>
-          <a href="#">Tech write-up (PDF)</a>
-        </div>
-      </article>
-
-      <!-- 2) HUNCH (Lunar Stake) -->
-      <article class="card">
-        <h3>HUNCH – Lunar Stake</h3>
-        <p>Concept and prototype of a deployable stake for regolith anchoring. Emphasis on manufacturability and testability.</p>
-        <div class="meta">
-          <span class="tag">DFM</span><span class="tag">Aluminum</span><span class="tag">Finite testing plan</span>
-        </div>
-        <p><strong>My role:</strong> mechanism design & test plan • <strong>Outcome:</strong> <em>X%</em> pull-out improvement in simulant (add stat).</p>
-        <div class="links">
-          <a href="#">Repository</a>
-          <a href="#">Poster / Slides</a>
-        </div>
-      </article>
-
-      <!-- 3) Custom Voron Trident -->
-      <article class="card">
-        <h3>Custom Voron Trident</h3>
-        <p>Reliability-first Trident (v1.8): CAN toolhead, tidy harnessing, custom skirts, and fusing strategy for safe serviceability.</p>
-        <div class="meta">
-          <span class="tag">24V</span><span class="tag">CAN</span><span class="tag">Klipper</span><span class="tag">DFM</span>
-        </div>
-        <p><strong>My role:</strong> full wiring & mods • <strong>Outcome:</strong> MTBF ↑ (add number); first-layer success rate ~<em>X%</em>.</p>
-        <div class="links">
-          <a href="#">Photos</a>
-          <a href="#">Mods Repo</a>
-        </div>
-      </article>
-
-      <!-- 4) 3D Renderer Engine -->
-      <article class="card">
-        <h3>3D Renderer Engine</h3>
-        <p>From-scratch software renderer (projection, z-buffer, lighting). Teaches me transforms, precision, and pipelines.</p>
-        <div class="meta">
-          <span class="tag">Python/C++</span><span class="tag">Linear Algebra</span><span class="tag">Graphics</span>
-        </div>
-        <p><strong>Outcome:</strong> renders <em>N</em> tris @ <em>fps</em> (add numbers) with depth-sorted faces.</p>
-        <div class="links">
-          <a class="primary" href="#">Live demo</a>
-          <a href="#">Repository</a>
-        </div>
-      </article>
-
-      <!-- 5) iPad Touch Keyguard -->
-      <article class="card">
-        <h3>iPad Touch Keyguard</h3>
-        <p>Custom laser-cut/printed guard that isolates touch targets to reduce accidental taps for accessibility.</p>
-        <div class="meta">
-          <span class="tag">Human-Centered</span><span class="tag">Acrylic/ASA</span><span class="tag">DFM</span>
-        </div>
-        <p><strong>Outcome:</strong> mis-taps ↓ by <em>X%</em> in quick user tests (add metric and 1 photo).</p>
-        <div class="links">
-          <a href="#">CAD / STL</a>
-          <a href="#">Build notes</a>
-        </div>
-      </article>
-
-      <!-- 6) 2048 (from-scratch) -->
-      <article class="card">
-        <h3>2048 – From-Scratch</h3>
-        <p>Terminal/GUI 2048 with clean game loop, merge rules, and testable board state.</p>
-        <div class="meta">
-          <span class="tag">Python</span><span class="tag">Data structures</span>
-        </div>
-        <p><strong>Outcome:</strong> well-tested logic; optional heuristic bot reaches <em>score N</em>.</p>
-        <div class="links">
-          <a class="primary" href="#">Play in browser</a>
-          <a href="#">Repository</a>
-        </div>
-      </article>
-
-      <!-- Optional: Laser Tracking -->
-      <article class="card">
-        <h3>Laser Tracking Prototype (Optional)</h3>
-        <p>RPi + OpenCV detects a red laser dot and estimates distance via camera geometry.</p>
-        <div class="meta">
-          <span class="tag">OpenCV</span><span class="tag">libcamera</span><span class="tag">Python</span>
-        </div>
-        <p><strong>Outcome:</strong> detection within <em>±X mm</em> at <em>Y–Z m</em>.</p>
-        <div class="links">
-          <a href="#">Repository</a>
-        </div>
-      </article>
-
-    </section>
-
-    <section class="row" style="margin-top:28px">
-      <div class="hero">
-        <h3>About</h3>
-        <p>I like turning scrappy prototypes into robust systems. If you’ve got a hard problem in robotics or reliable printing, I’m in.</p>
-        <div class="links">
-          <a href="resume.pdf" class="primary">Download Résumé</a>
-          <a href="mailto:keenan@example.com">Email</a>
-          <a href="https://github.com/keenanmanchester">GitHub</a>
-        </div>
+      <div class="links">
+        <a href="#">Repository</a>
+        <a href="#">Demo</a>
       </div>
-      <div class="hero">
-        <h3>Highlights</h3>
-        <ul>
-          <li>HERC rover — 3rd place (2025)</li>
-          <li>Voron Trident + V0 builder</li>
-          <li>12V/24V wiring, CAN, Klipper</li>
-        </ul>
-      </div>
-    </section>
+    </article>
 
-    <footer style="margin-top:28px">
-      <p>© <script>document.write(new Date().getFullYear())</script> Keenan Manchester</p>
-    </footer>
-  </div>
+    <!-- Small card next to HERC -->
+    <article class="card">
+      <h3>2048 Game</h3>
+      <p>Python reimplementation of the 2048 puzzle with GUI and AI heuristic bot.</p>
+      <div class="meta">
+        <span class="tag">Python</span><span class="tag">Algorithms</span>
+      </div>
+      <div class="links">
+        <a href="#">Repository</a>
+      </div>
+    </article>
+
+    <!-- Normal cards row -->
+    <article class="card">
+      <img src="assets/trident.png" alt="Voron Trident mod">
+      <h3>Custom Voron Trident</h3>
+      <p>Reliability-first 3D printer build with CAN toolhead, custom wiring harnesses, and safety fusing.</p>
+      <div class="meta">
+        <span class="tag">3D Printing</span><span class="tag">24V</span><span class="tag">CAN</span>
+      </div>
+      <div class="links">
+        <a href="#">Repository</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <h3>3D Renderer Engine</h3>
+      <p>From-scratch software renderer demonstrating projection, z-buffer, and lighting basics.</p>
+      <div class="meta">
+        <span class="tag">C++</span><span class="tag">Graphics</span>
+      </div>
+      <div class="links">
+        <a href="#">Repository</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <h3>iPad Touch Keyguard</h3>
+      <p>Accessibility-focused guard to reduce accidental taps, laser-cut and 3D printed iterations.</p>
+      <div class="meta">
+        <span class="tag">Accessibility</span><span class="tag">CAD</span>
+      </div>
+      <div class="links">
+        <a href="#">Build Notes</a>
+      </div>
+    </article>
+
+    <!-- Hero card: HUNCH -->
+    <article class="card wide">
+      <img src="assets/hunch-render.png" alt="HUNCH lunar stake">
+      <h3>HUNCH – Lunar Stake</h3>
+      <p>NASA HUNCH collaboration: designed a deployable lunar regolith stake, prototyped in aluminum with testing plan.</p>
+      <div class="meta">
+        <span class="tag">DFM</span><span class="tag">Aluminum</span><span class="tag">Testing</span>
+      </div>
+      <div class="links">
+        <a href="#">Slides</a>
+        <a href="#">Repository</a>
+      </div>
+    </article>
+
+    <!-- Small card next to HUNCH -->
+    <article class="card">
+      <h3>Laser Tracking Prototype</h3>
+      <p>RPi + OpenCV detects red laser dot and estimates distance via geometry.</p>
+      <div class="meta">
+        <span class="tag">OpenCV</span><span class="tag">Python</span>
+      </div>
+      <div class="links">
+        <a href="#">Repository</a>
+      </div>
+    </article>
+
+  </section>
 </body>
 </html>
