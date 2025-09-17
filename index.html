@@ -1,228 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Keenan Manchester – Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    :root {
-      --bg: #f9fbfd;
-      --card: #ffffff;
-      --text: #1c1f24;
-      --muted: #5a6c7c;
-      --accent: #4f8ef7;
-      --accent-light: #dce9ff;
-    }
+<!-- =========================
+FILE 1: index.html
+========================= -->
+<!doctype html>
+<main>
+<section class="grid">
 
-    * { box-sizing: border-box; }
+<!-- HERC rover (wide hero) -->
+<article class="card wide">
+<figure><img src="https://inaneek.github.io/assets/herc/travel.JPEG" alt="HERC rover in travel configuration" loading="lazy" /></figure>
+<h3>HERC Rover</h3>
+<p>Lightweight custom RC rover with portal‑style axles. Team lead. Placed 3rd in NASA HERC 2025.</p>
+<div class="meta"><span class="tag">ASA/TPU</span><span class="tag">Python</span><span class="tag">Additive DFM</span><span class="tag">Raspberry Pi</span></div>
+<div class="links">
+<a class="button" href="https://github.com/iNaneek/HERC-RC" target="_blank" rel="noopener">Repository</a>
+<a class="button secondary" href="https://cad.onshape.com/documents/ce5680503a09f56d865c4c78/w/b9fbabf9291faaeca8b11b6d/e/d5d0dc9d4e8e394692da8d75" target="_blank" rel="noopener">CAD</a>
+</div>
+</article>
 
-    body {
-      margin: 0;
-      font-family: "Inter", system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
+<!-- 2048 small card -->
+<article class="card">
+<figure><img src="https://inaneek.github.io/assets/2048-high.png" alt="2048 GUI" loading="lazy" /></figure>
+<h3>2048 Game</h3>
+<p>Python reimplementation of the 2048 puzzle with GUI.</p>
+<div class="meta"><span class="tag">Python</span><span class="tag">Pygame</span><span class="tag">GUI</span><span class="tag">Algorithms</span></div>
+<div class="links"><a class="button" href="https://github.com/iNaneek/2048" target="_blank" rel="noopener">Repository</a></div>
+</article>
 
-    header {
-      max-width: 1050px;
-      margin: 0 auto;
-      padding: 40px 20px 20px;
-      text-align: center;
-    }
+<!-- Voron Trident (wide) -->
+<article class="card wide">
+<figure><img src="assets/voronVT/blurred.jpeg" alt="Custom Voron Trident 3D printer" loading="lazy" /></figure>
+<h3>Custom Voron Trident</h3>
+<p>Custom 3D printer derived from the Voron Trident, built for very high speeds, high temperatures, and minimized downtime.</p>
+<div class="meta"><span class="tag">FDM</span><span class="tag">Klipper</span><span class="tag">CAN</span><span class="tag">CoreXY</span></div>
+<div class="links">
+<a class="button" href="trident.html">Photos</a>
+<a class="button secondary" href="https://cad.onshape.com/documents/103cc634eab44e9a1905d100/w/89d80d9f637934cf927d5b3a/e/c0a962004137451826aeeaf6?renderMode=0&uiState=68ca2a52d3f80712e1757b63" target="_blank" rel="noopener">CAD</a>
+</div>
+</article>
 
-    header h1 {
-      margin: 0;
-      font-size: clamp(28px, 5vw, 44px);
-      color: var(--accent);
-    }
+<!-- 3D Renderer with photo slot -->
+<article class="card">
+<figure><img src="assets/renderer/preview.png" alt="3D renderer wireframe preview" loading="lazy" /></figure>
+<h3>3D Renderer Engine</h3>
+<p>From‑scratch software renderer that projects simple 3D objects in a 2D viewport.</p>
+<div class="meta"><span class="tag">Python</span><span class="tag">Projection</span><span class="tag">Algorithms</span></div>
+<div class="links"><a class="button" href="https://github.com/iNaneek/3D-Render" target="_blank" rel="noopener">Repository</a></div>
+</article>
 
-    header p {
-      margin: 12px auto 0;
-      max-width: 70ch;
-      color: var(--muted);
-    }
+<!-- iPad Keyguard with photo slot -->
+<article class="card">
+<figure><img src="assets/keyguard/preview.jpg" alt="iPad keyguard installed on tablet" loading="lazy" /></figure>
+<h3>iPad Touch Keyguard</h3>
+<p>Accessibility‑focused keyguard to improve AAC device use for students with motor impairment. Designed and 3D‑printed.</p>
+<div class="meta"><span class="tag">CAD</span><span class="tag">Accessibility</span><span class="tag">Stakeholder Research</span><span class="tag">3D Printing</span></div>
+<div class="links"><a class="button secondary" href="https://cad.onshape.com/documents/8547a39793c62f3c553b7e5e/w/7c3718d41910a9dc11ee6916/e/5a893425bbfc497d52312519" target="_blank" rel="noopener">CAD</a></div>
+</article>
 
-    .grid {
-      max-width: 1050px;
-      margin: 20px auto;
-      padding: 0 20px 40px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
+<!-- HUNCH (normal size) -->
+<article class="card">
+<figure><img src="assets/hunch/render1.png" alt="HUNCH Lunar Stake render" loading="lazy" /></figure>
+<h3>HUNCH — Lunar Stake</h3>
+<p>NASA HUNCH collaboration: deployable lunar regolith stake, prototyped in aluminum with testing plan.</p>
+<div class="meta"><span class="tag">DFM</span><span class="tag">Aluminum</span><span class="tag">Testing</span></div>
+<div class="links"><a class="button secondary" href="#" aria-disabled="true">Slides</a><a class="button" href="#" aria-disabled="true">Repository</a></div>
+</article>
 
-    .card {
-      background: var(--card);
-      border-radius: 14px;
-      padding: 18px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-      display: flex;
-      flex-direction: column;
-    }
+<!-- Laser Tracking -->
+<article class="card">
+<h3>Laser Tracking Prototype</h3>
+<p>Raspberry Pi + OpenCV detects a red laser dot and estimates distance via geometry.</p>
+<div class="meta"><span class="tag">OpenCV</span><span class="tag">Python</span></div>
+<div class="links"><a class="button" href="#" aria-disabled="true">Repository</a></div>
+</article>
 
-    .card img {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 12px;
-    }
-
-    .card h3 {
-      margin: 0 0 8px;
-      color: var(--accent);
-    }
-
-    .card p {
-      margin: 0 0 12px;
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    .meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 10px;
-    }
-
-    .tag {
-      font-size: 12px;
-      padding: 5px 9px;
-      border-radius: 999px;
-      background: var(--accent-light);
-      color: var(--accent);
-    }
-
-    .links a {
-      display: inline-block;
-      margin-right: 10px;
-      margin-top: auto;
-      padding: 8px 12px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 14px;
-      background: var(--accent);
-      color: white;
-      transition: background 0.2s;
-    }
-
-    .links a:hover {
-      background: #3b6ed6;
-    }
-
-    /* Hero cards span 2 columns */
-    .wide {
-      grid-column: span 2;
-    }
-
-    @media (max-width: 900px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-      .wide {
-        grid-column: span 1;
-      }
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Keenan Manchester – Project Projects</h1>
-    <p>A selection of my current work in robotics, design, and software.</p>
-  </header>
-
-  <section class="grid">
-
-        <!-- HERC (wide hero) -->
-    <article class="card wide">
-      <img src="https://inaneek.github.io/assets/herc/travel.JPEG"
-           alt="HERC rover on travel configuration render" loading="lazy">
-      <h3>HERC Rover</h3>
-      <p>Lightweight custom RC rover with 4 link suspension on portal-like axels. Team Lead. Placed 3rd in NASA HERC 2025.</p>
-      <div class="meta">
-        <span class="tag">ASA/TPU</span><span class="tag">Python</span><span class="tag">Addative DFM</span><span class="tag">RPi</span>
-      </div>
-      <div class="links">
-        <a href="https://github.com/iNaneek/HERC-RC">Repository</a>
-        <a href="https://cad.onshape.com/documents/ce5680503a09f56d865c4c78/w/b9fbabf9291faaeca8b11b6d/e/d5d0dc9d4e8e394692da8d75?renderMode=0&uiState=68c1b98e51d24c84d909671f">CAD</a>
-      </div>
-    </article>
-
-    <!-- Small card next to HERC -->
-    <article class="card">
-      <h3>2048 Game</h3>
-      <p>Python reimplementation of the 2048 puzzle with GUI.</p>
-      <img src="https://inaneek.github.io/assets/2048-high.png"
-           alt="2048 GUI demonstration" loading="lazy">
-      <div class="meta">
-        <span class="tag">Python</span><span class="tag">Pygame</span><span class="tag">GUI</span><span class="tag">Algorithms</span>
-      </div>
-      <div class="links">
-        <a href="https://github.com/iNaneek/2048">Repository</a>
-      </div>
-    </article>
-
-    <!-- Normal cards row -->
-    <article class="card">
-      <img src="assets/voronVT/blurred.jpeg" alt="Voron Trident mod">
-      <h3>Custom Voron Trident</h3>
-      <p>Custom 3D printer derived from Voron Trident, built for extremely high speeds, high temperatures and minimized downtime.</p>
-      <div class="meta">
-        <span class="tag">FDM</span><span class="tag">Klipper</span><span class="tag">CAN</span><span class="tag">CoreXY</span>
-      </div>
-      <div class="links">
-        <a href="https://cad.onshape.com/documents/103cc634eab44e9a1905d100/w/89d80d9f637934cf927d5b3a/e/c0a962004137451826aeeaf6?renderMode=0&uiState=68ca2a52d3f80712e1757b63">Repository</a>
-      </div>
-    </article>
-
-    <article class="card">
-      <h3>3D Renderer Engine</h3>
-      <p>From scratch software renderer that projects simple 3D objects in a 2D renderer.</p>
-      <div class="meta">
-        <span class="tag">Python</span><span class="tag">Perspective Projection</span><span class="tag">Algorithims</span>
-      </div>
-      <div class="links">
-        <a href="https://github.com/iNaneek/3D-Render">Repository</a>
-      </div>
-    </article>
-
-    <article class="card">
-      <h3>iPad Touch Keyguard</h3>
-      <p>Accessibility-focused keyguard to ease use of communication devices for students with muscle impairment. Designed and 3D printed.</p>
-      <div class="meta">
-        <span class="tag">CAD</span><span class="tag">Accessibility</span><span class="tag">Stakeholder Interaction</span><span class="tag">3D printing</span>
-      </div>
-      <div class="links">
-        <a href="https://cad.onshape.com/documents/8547a39793c62f3c553b7e5e/w/7c3718d41910a9dc11ee6916/e/5a893425bbfc497d52312519?renderMode=0&uiState=68ca2d4d7518c747636e2ccd">CAD</a>
-      </div>
-    </article>
-
-    <!-- Hero card: HUNCH -->
-    <article class="card wide">
-      <img src="assets/hunch/render1.png" alt="HUNCH lunar stake">
-      <h3>HUNCH – Lunar Stake</h3>
-      <p>NASA HUNCH collaboration: designed a deployable lunar regolith stake, prototyped in aluminum with testing plan.</p>
-      <div class="meta">
-        <span class="tag">DFM</span><span class="tag">Aluminum</span><span class="tag">Testing</span>
-      </div>
-      <div class="links">
-        <a href="#">Slides</a>
-        <a href="#">Repository</a>
-      </div>
-    </article>
-
-    <!-- Small card next to HUNCH -->
-    <article class="card">
-      <h3>Laser Tracking Prototype</h3>
-      <p>RPi + OpenCV detects red laser dot and estimates distance via geometry.</p>
-      <div class="meta">
-        <span class="tag">OpenCV</span><span class="tag">Python</span>
-      </div>
-      <div class="links">
-        <a href="#">Repository</a>
-      </div>
-    </article>
-
-  </section>
+</section>
+</main>
+<footer>© <span id="y"></span> Keenan Manchester</footer>
+<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>

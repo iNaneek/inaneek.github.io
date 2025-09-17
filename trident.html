@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Custom Voron Trident — Photos</title>
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    :root {
+      --bg:#f9fbfd; --text:#1c1f24; --muted:#5a6c7c;
+      --card:#ffffff; --accent:#4f8ef7; --accent-600:#3b6ed6; --ring:0 0 0 3px rgba(79,142,247,.35);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg:#0f141a; --text:#e9eef5; --muted:#a7b4c1; --card:#151b23; --accent:#79a8ff; --accent-600:#6594ef; }
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;background:var(--bg);color:var(--text);line-height:1.6}
+    header,main{max-width:1100px;margin:0 auto;padding:20px}
+    header{padding-top:28px;display:flex;align-items:center;gap:12px}
+    a.button{display:inline-block;padding:8px 12px;border-radius:10px;text-decoration:none;background:var(--accent);color:#fff}
+    a.button:hover,a.button:focus-visible{background:var(--accent-600);box-shadow:var(--ring)}
+    h1{font-size:clamp(22px,4vw,32px);margin:0}
+    .muted{color:var(--muted)}
+    .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+    figure{margin:0;background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+    img{display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:4/3}
+    .caption{padding:10px 12px;font-size:14px;color:var(--muted)}
+    /* simple lightbox */
+    dialog{border:none;padding:0;border-radius:12px;overflow:hidden;max-width:min(92vw,1200px)}
+    dialog::backdrop{background:rgba(0,0,0,.6)}
+    .lb-img{display:block;max-width:92vw;max-height:80vh}
+    .topbar{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--card)}
+    .close{background:transparent;border:1px solid var(--accent);color:var(--accent);padding:6px 10px;border-radius:8px;cursor:pointer}
+    .close:focus-visible{box-shadow:var(--ring);outline:none}
+    footer{max-width:1100px;margin:0 auto;padding:24px 20px;color:var(--muted);font-size:14px}
+  </style>
+</head>
+<body>
+  <header>
+    <a class="button" href="./">← Back</a>
+    <h1>Custom Voron Trident — Photo Gallery</h1>
+  </header>
+
+  <main>
+    <p class="muted">Build, wiring, motion system, prints, and detail shots.</p>
+
+    <section class="grid" id="gallery">
+      <!-- EXAMPLE CARDS — replace/duplicate as needed -->
+      <figure>
+        <img src="assets/voronVT/01.jpg" alt="Voron Trident front three-quarter with enclosure" loading="lazy" data-full="assets/voronVT/01.jpg">
+        <figcaption class="caption">Front three-quarter with enclosure</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/voronVT/02.jpg" alt="Toolhead and cable chain close-up" loading="lazy" data-full="assets/voronVT/02.jpg">
+        <figcaption class="caption">Toolhead + cable chain close-up</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/voronVT/03.jpg" alt="CAN board and wiring routing" loading="lazy" data-full="assets/voronVT/03.jpg">
+        <figcaption class="caption">CAN board & wiring routing</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/voronVT/04.jpg" alt="CoreXY belts and gantry" loading="lazy" data-full="assets/voronVT/04.jpg">
+        <figcaption class="caption">CoreXY belts & gantry</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/voronVT/05.jpg" alt="High-speed print sample" loading="lazy" data-full="assets/voronVT/05.jpg">
+        <figcaption class="caption">High-speed print sample</figcaption>
+      </figure>
+      <!-- Add more <figure> blocks as needed -->
+    </section>
+  </main>
+
+  <!-- Native lightbox with <dialog> -->
+  <dialog id="lightbox">
+    <div class="topbar">
+      <span class="muted" id="lbCaption"></span>
+      <button class="close" id="lbClose" aria-label="Close">Close</button>
+    </div>
+    <img class="lb-img" id="lbImg" alt="">
+  </dialog>
+
+  <footer>Tip: drop your images into <code>assets/voronVT/</code> and update the filenames above.</footer>
+
+  <script>
+    const dlg = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImg');
+    const lbCap = document.getElementById('lbCaption');
+    document.getElementById('lbClose').addEventListener('click', ()=> dlg.close());
+
+    document.getElementById('gallery').addEventListener('click', e => {
+      const img = e.target.closest('img');
+      if(!img) return;
+      lbImg.src = img.dataset.full || img.src;
+      lbImg.alt = img.alt || '';
+      lbCap.textContent = img.nextElementSibling?.textContent || '';
+      dlg.showModal();
+    });
+
+    // close on backdrop click
+    dlg.addEventListener('click', (e)=>{
+      const rect = dlg.getBoundingClientRect();
+      const clickedOutside = e.clientX < rect.left || e.clientX > rect.right || e.clientY < rect.top || e.clientY > rect.bottom;
+      if (clickedOutside) dlg.close();
+    });
+  </script>
+</body>
+</html>
