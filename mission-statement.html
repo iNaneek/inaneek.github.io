@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Keenan Manchester — Mission</title>
+  <style>
+    :root{
+      --text: #1f2937;
+      --muted: #475569;
+      --accent: #7c3aed; /* violet stroke */
+      --bg: #ffffff;
+    }
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: var(--bg);
+      color: var(--text);
+    }
+    .wrap{
+      min-height:100svh;
+      display:grid;
+      grid-template-columns: 1fr 1fr; /* keep the split perfectly centered */
+      align-items:center;
+      gap:4vw;
+      padding:24px;
+      max-width:1200px; /* center the whole layout */
+      margin:0 auto;
+    }
+    @media (max-width: 720px){
+      .wrap{grid-template-columns: 1fr;}
+      .art, .content{ text-align:left; justify-self:start; max-width:min(600px, 50vw); }
+    }
+    
+
+    .content{ text-align:left; }
+
+    h1{
+      margin:0 0 1rem;
+      font-weight:800;
+      letter-spacing:-0.02em;
+      font-size:clamp(2.5rem, 6vw, 4rem);
+      line-height:1.1;
+    }
+    .accent{ color:var(--accent); }
+
+    .mission{
+      margin:0;
+      max-width:52ch;
+      font-size:clamp(1rem, 2.5vw, 1.25rem);
+      line-height:1.6;
+      color:var(--muted);
+    }
+    .mission span{ display:block; }
+    .highlight{ color:var(--accent); font-weight:600; }
+
+    /* Nozzle SVG styling */
+    .art{display:flex; align-items:center; justify-content:flex-end; height:100%; justify-self:end;}
+    .v6{height:100%; width:auto; max-height:100%;}
+    .v6-path{
+      fill:none;
+      stroke:var(--accent);
+      stroke-width:6; /* thickened line */
+      stroke-linejoin:round;
+      stroke-linecap:round;
+      stroke-dasharray:1; stroke-dashoffset:1;
+      animation:drawCycle 8s linear infinite;
+    }
+    @keyframes drawCycle{
+      0% { stroke-dashoffset: 0; }
+      15% { stroke-dashoffset: 2; } /* loop immediately */
+      100% { stroke-dashoffset: 2; } /* loop immediately */
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <!-- Left: refined V6 nozzle outline, single purple stroke -->
+    <div class="art" aria-hidden="true">
+      <svg class="v6" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="V6 nozzle outline">
+        <path class="v6-path" pathLength="1" d="
+          M 160 480
+          L 120 440 L 60 440 L 40 420 L 40 340 L 60 320 L 110 320 L 110 260 L 95 230 L 95 50 L 115 30
+          L 265 30 L 285 50 L 285 230 L 270 260 L 270 320 L 320 320 L 340 340 L 340 420 L 320 440 L 260 440 L 220 480 L 160 480
+        "/>
+      </svg>
+    </div>
+
+    <!-- Right: Name + Mission (left aligned) -->
+    <div class="content">
+      <h1>
+        <span>Keenan</span><br/>
+        <span class="accent">Manchester</span>
+      </h1>
+      <p class="mission">
+        <span>I’m using my Design Engineering degree to <span class="highlight">advance additive manufacturing</span></span>
+        <span>and develop smarter, more sustainable ways</span>
+        <span>to design, prototype, and produce functional parts</span>
+        <span>that bridge creativity and engineering precision</span>
+        <span>through innovative design practices.</span>
+      </p>
+    </div>
+  </main>
+  <script>
+    function sizeNozzle(){
+      const svg = document.querySelector('.art .v6');
+      const content = document.querySelector('.content');
+      if(svg && content){
+        svg.style.height = content.offsetHeight + 'px';
+      }
+    }
+    window.addEventListener('load', sizeNozzle);
+    window.addEventListener('resize', sizeNozzle);
+  </script>
+</body>
+</html>
