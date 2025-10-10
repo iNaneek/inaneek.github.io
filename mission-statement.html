@@ -18,21 +18,22 @@
       background: var(--bg);
       color: var(--text);
     }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 8px 24px; /* reduced top spacing */
+    }
     .wrap{
       min-height:100svh;
       display:grid;
       grid-template-columns: 1fr 1fr; /* keep the split perfectly centered */
       align-items:center;
       gap:4vw;
-      padding:24px;
-      max-width:1200px; /* center the whole layout */
-      margin:0 auto;
     }
     @media (max-width: 720px){
       .wrap{grid-template-columns: 1fr;}
       .art, .content{ text-align:left; justify-self:start; max-width:min(600px, 50vw); }
     }
-    
 
     .content{ text-align:left; }
 
@@ -53,7 +54,7 @@
       color:var(--muted);
     }
     .mission span{ display:block; }
-    .highlight{ color:var(--accent); font-weight:600; }
+    .highlight{ color:var(--accent); font-weight:600; display: inline;}
 
     /* Nozzle SVG styling */
     .art{display:flex; align-items:center; justify-content:flex-end; height:100%; justify-self:end;}
@@ -69,39 +70,84 @@
     }
     @keyframes drawCycle{
       0% { stroke-dashoffset: 0; }
-      15% { stroke-dashoffset: 2; } /* loop immediately */
-      100% { stroke-dashoffset: 2; } /* loop immediately */
+      10% { stroke-dashoffset: 2; }
+      100% { stroke-dashoffset: 2; }
+    }
+
+    /* About section styling */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      align-items: center;
+      gap: 2rem;
+      margin-top: 4rem;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 24px;
+    }
+    .about img {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .about h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .about h2 .accent { color: var(--accent); }
+    .about p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 65ch;
     }
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <!-- Left: refined V6 nozzle outline, single purple stroke -->
-    <div class="art" aria-hidden="true">
-      <svg class="v6" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="V6 nozzle outline">
-        <path class="v6-path" pathLength="1" d="
-          M 160 480
-          L 120 440 L 60 440 L 40 420 L 40 340 L 60 320 L 110 320 L 110 260 L 95 230 L 95 50 L 115 30
-          L 265 30 L 285 50 L 285 230 L 270 260 L 270 320 L 320 320 L 340 340 L 340 420 L 320 440 L 260 440 L 220 480 L 160 480
-        "/>
-      </svg>
-    </div>
+  <div class="container">
+    <main class="wrap">
+      <!-- Left: refined V6 nozzle outline, single purple stroke -->
+      <div class="art" aria-hidden="true">
+        <svg class="v6" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="V6 nozzle outline">
+          <path class="v6-path" pathLength="1" d="
+            M 160 480
+            L 120 440 L 60 440 L 40 420 L 40 340 L 60 320 L 110 320 L 110 260 L 95 230 L 95 50 L 115 30
+            L 265 30 L 285 50 L 285 230 L 270 260 L 270 320 L 320 320 L 340 340 L 340 420 L 320 440 L 260 440 L 220 480 L 160 480
+          "/>
+        </svg>
+      </div>
 
-    <!-- Right: Name + Mission (left aligned) -->
-    <div class="content">
-      <h1>
-        <span>Keenan</span><br/>
-        <span class="accent">Manchester</span>
-      </h1>
-      <p class="mission">
-        <span>I’m using my Design Engineering degree to <span class="highlight">advance additive manufacturing</span></span>
-        <span>and develop smarter, more sustainable ways</span>
-        <span>to design, prototype, and produce functional parts</span>
-        <span>that bridge creativity and engineering precision</span>
-        <span>through innovative design practices.</span>
-      </p>
-    </div>
-  </main>
+      <!-- Right: Name + Mission (left aligned) -->
+      <div class="content">
+        <h1>
+          <span>Keenan</span><br/>
+          <span class="accent">Manchester</span>
+        </h1>
+        <p class="mission">
+            <span>I’m using my Design Engineering degree to </span>
+            <span class="highlight">advance additive manufacturing</span>
+            <span>and integrate design for manufacturability</span>
+            <span>into product design to improve rapid prototyping</span>
+            <span>and final production in order to improve</span>
+            <span>product performance and production.</span>
+        </p>
+      </div>
+    </main>
+
+    <section class="about">
+      <div>
+        <h2>About <span class="accent">Me</span></h2>
+        <p>
+          I’m a Design Engineering student from Colorado School of Mines with a passion for creative problem solving integrating mechanical design, electronics, additive manufacturing and adjacent disciplines. I’ve led multiple personal and group design projects, including 3D printers, recycling devices, and a proprietary RC Rover. These projects developed my engineering skills and demonstrated my ingenuity and perseverance. I’m passionate about the projects I participate in and face each one with an open mindset looking for innovative and intelligent solutions that take advantage of the manufacturing technique. My skills include advanced CAD, DFM, creative iteration, and system integration, supported by strong programming and analysis skills.  
+        </p>
+      </div>
+      <img src="https://inaneek.github.io/assets/voronVT/enclosed2.jpeg" alt="Voron 3D printer project" />
+    </section>
+  </div>
+
   <script>
     function sizeNozzle(){
       const svg = document.querySelector('.art .v6');
