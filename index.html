@@ -1,52 +1,308 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Keenan Manchester — Portfolio</title>
-  <meta name="description" content="Projects in robotics, design, and software by Keenan Manchester." />
-  <meta name="color-scheme" content="light dark" />
-  <style>
-    :root { --bg:#f6f9fc; --card:#ffffff; --text:#111827; --muted:#6b7280; --accent:#4f8ef7; --accent-600:#3b6ed6; --accent-light:#e8f0ff; --ring:0 0 0 3px rgba(79,142,247,.35); }
-    @media (prefers-color-scheme: dark) { :root { --bg:#0f141a; --card:#151b23; --text:#e5ecf3; --muted:#9aa7b5; --accent:#79a8ff; --accent-600:#6594ef; --accent-light:#1f2a3a; } }
-    *,*::before,*::after{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;background:var(--bg);color:var(--text);line-height:1.6}
-    header{max-width:1100px;margin:0 auto;padding:40px 20px 10px;text-align:center}
-    header h1{margin:0;color:var(--accent);font-size:clamp(28px,5vw,46px);letter-spacing:-.02em}
-    header p{margin:10px auto 0;max-width:72ch;color:var(--muted)}
-    main{max-width:1100px;margin:0 auto;padding:16px 20px 64px}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keenan Manchester — Portfolio</title>
+    <meta name="description" content="Projects in robotics, design, and software by Keenan Manchester." />
+    <meta name="color-scheme" content="light dark" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-    /* Card grid */
-    .grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
-    .card{background:var(--card);border-radius:14px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,.06);display:flex;flex-direction:column;transition:transform .15s, box-shadow .15s}
-    .card:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.12)}
-    .card figure{margin:0 0 12px}
-    .card img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:10px;display:block}
-    .img-square{aspect-ratio:1/1}
-    .card h3{margin:0 0 8px;color:var(--accent);font-size:20px}
-    .card p{margin:0 0 12px;color:var(--muted);font-size:15px}
-    .meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
-    .tag{font-size:12px;padding:5px 9px;border-radius:999px;background:var(--accent-light);color:var(--accent)}
-    .links{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap}
-    .button{display:inline-block;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:14px;background:var(--accent);color:#fff}
-    .button.secondary{background:transparent;color:var(--accent);border:1px solid var(--accent)}
-    .button:is(:hover,:focus-visible){background:var(--accent-600);box-shadow:var(--ring)}
-    .button.secondary:is(:hover,:focus-visible){background:var(--accent-light)}
+        :root {
+            --primary-violet: #7c3aed;
+            --charcoal-dark: #2c2c2c;
+            --charcoal-light: #3a3a3a;
+            --white: #ffffff;
+            --light-gray: #f5f5f5;
+            --text-color: #4a4a4a;
+            --muted-text: #6b7280;
+            --shadow-light: rgba(0, 0, 0, 0.08);
+            --shadow-hover: rgba(0, 0, 0, 0.12);
+            --button-hover-bg: #6a2dc9; /* Slightly darker violet */
+        }
 
-    /* Make HERC + Printer big */
-    @media (min-width: 900px){ .wide{grid-column:span 2} }
+        /* Dark mode adjustments - using provided dark mode vars for consistency where possible */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0f141a;
+                --card: #151b23;
+                --text-color: #e5ecf3;
+                --muted-text: #9aa7b5;
+                --primary-violet: #8e62f7; /* Slightly adjusted violet for dark mode */
+                --charcoal-dark: #e5ecf3; /* Text color in dark mode */
+                --light-gray: #1f2a3a; /* Tag background in dark mode */
+                --shadow-light: rgba(255, 255, 255, 0.08);
+                --shadow-hover: rgba(255, 255, 255, 0.12);
+                --button-hover-bg: #a381ff; /* Darker violet for dark mode hover */
+            }
+            body { background-color: var(--bg); color: var(--text-color); }
+            .card { background-color: var(--card); }
+            .project-card ul li { background-color: var(--light-gray); color: var(--text-color); }
+        }
 
-    footer{max-width:1100px;margin:0 auto;padding:10px 20px 48px;color:var(--muted);text-align:center;font-size:14px}
-  </style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-gray); /* Default light mode background */
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            color: var(--charcoal-dark);
+            letter-spacing: -0.02em;
+            font-weight: 700;
+        }
+
+        header p {
+            margin: 15px auto 0;
+            max-width: 70ch;
+            color: var(--muted-text);
+            font-size: 1.1rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 30px 0;
+        }
+
+        /* Projects Grid */
+        .grid {
+            display: grid;
+            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .card {
+            background-color: var(--white); /* Default light mode card background */
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px var(--shadow-light);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 10px 30px var(--shadow-hover);
+        }
+
+        .card figure {
+            margin: 0 0 20px;
+        }
+
+        .card img {
+            width: 100%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            border-radius: 10px;
+            display: block;
+        }
+
+        /* Override for square images */
+        .card .img-square {
+            aspect-ratio: 1/1 !important; /* Use !important to override the general aspect-ratio */
+        }
+
+        .card h3 {
+            font-size: 1.7rem;
+            color: var(--primary-violet);
+            margin: 0 0 5px;
+            font-weight: 600;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: var(--text-color);
+            margin: 0 0 20px;
+            line-height: 1.7;
+            flex-grow: 1; /* Allows paragraph to take up available space */
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            font-size: 0.8rem;
+            padding: 6px 14px;
+            border-radius: 20px;
+            background-color: var(--light-gray); /* Default tag background */
+            color: var(--charcoal-dark); /* Default tag text */
+            font-weight: 500;
+        }
+
+        /* Specific tag color for dark mode to match original intent for "accent-light" */
+        @media (prefers-color-scheme: dark) {
+            .tag {
+                background-color: var(--light-gray); /* Now uses the dark mode tag background */
+                color: var(--primary-violet); /* Using primary violet as the original 'accent' color */
+            }
+        }
+
+
+        .links {
+            margin-top: auto; /* Pushes buttons to the bottom */
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding-top: 10px; /* Space between tags and buttons */
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            background-color: var(--primary-violet);
+            color: var(--white);
+            transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .button.secondary {
+            background-color: transparent;
+            color: var(--primary-violet);
+            border: 1px solid var(--primary-violet);
+            box-shadow: none;
+        }
+
+        .button:is(:hover,:focus-visible) {
+            background-color: var(--button-hover-bg);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .button.secondary:is(:hover,:focus-visible) {
+            background-color: rgba(124, 58, 237, 0.1); /* Light violet background */
+            color: var(--button-hover-bg);
+            transform: translateY(-1px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Make HERC + Printer big */
+        @media (min-width: 900px){
+            .wide{
+                grid-column:span 2;
+            }
+        }
+
+        /* Contact List specific styling */
+        .contact-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 0 0 20px 0;
+        }
+
+        .contact-list li {
+            font-size: 0.95rem;
+            color: var(--text-color);
+            margin-bottom: 8px;
+        }
+
+        .contact-list li strong {
+            color: var(--charcoal-dark);
+            font-weight: 600;
+        }
+
+        .contact-list li a {
+            color: var(--primary-violet);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-list li a:hover {
+            color: var(--button-hover-bg);
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            max-width: 1100px;
+            margin: 40px auto 30px;
+            padding: 10px 20px;
+            color: var(--muted-text);
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer div {
+            margin-top: 10px;
+            font-size: 0.75rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            .card {
+                padding: 25px;
+            }
+
+            .card h3 {
+                font-size: 1.5rem;
+            }
+
+            .card p {
+                font-size: 0.9rem;
+            }
+
+            .tag {
+                font-size: 0.75rem;
+                padding: 5px 10px;
+            }
+
+            .button {
+                padding: 8px 14px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
 </head>
 <body>
   <header>
-    <h1>Keenan Manchester — Projects</h1>
-    <p>A selection of my current work in robotics, design, and software.</p>
+    <div class="container">
+        <h1>Keenan Manchester — Projects</h1>
+        <p>A selection of my current work in robotics, design, and software.</p>
+    </div>
   </header>
 
   <main>
-    <section class="grid" aria-label="Project grid">
+    <section class="container grid" aria-label="Project grid">
 
       <!-- HERC (wide) -->
       <article class="card wide">
@@ -54,7 +310,7 @@
           <img src="https://inaneek.github.io/assets/herc/travel.JPEG" alt="HERC rover in travel configuration" loading="lazy" />
         </figure>
         <h3>HERC Rover</h3>
-        <p>Lightweight custom RC rover with portal‑style axles. Team lead. Placed 3rd in NASA HERC 2025.</p>
+        <p>Lightweight custom RC rover with portal‑style axles, designed and built for NASA HERC 2025 where it placed 3rd. Features advanced 4-link suspension and composites.</p>
         <div class="meta">
           <span class="tag">ASA/TPU</span><span class="tag">Python</span><span class="tag">Additive DFM</span><span class="tag">Raspberry Pi</span>
         </div>
@@ -70,10 +326,10 @@
         <figure>
           <img src="https://inaneek.github.io/assets/2048-high.png"
                alt="2048 game screenshot"
-               style="aspect-ratio: 1 / 1; object-fit: cover; width: 100%; border-radius: 10px;" />
+               class="img-square" />
         </figure>
         <h3>2048 Game</h3>
-        <p>Python reimplementation of the 2048 puzzle with GUI.</p>
+        <p>A complete Python reimplementation of the classic 2048 puzzle, featuring a custom GUI and robust game logic.</p>
         <div class="meta">
           <span class="tag">Python</span>
           <span class="tag">Pygame</span>
@@ -81,7 +337,7 @@
           <span class="tag">Algorithms</span>
         </div>
         <div class="links">
-          <a class="button" href="https://github.com/iNaneek/2048" target="_blank">Repository</a>
+          <a class="button" href="https://github.com/iNaneek/2048" target="_blank" rel="noopener">Repository</a>
         </div>
       </article>
 
@@ -91,7 +347,7 @@
           <img src="https://inaneek.github.io/assets/voronVT/blurred.jpeg" alt="Custom Voron Trident 3D printer" loading="lazy" />
         </figure>
         <h3>Custom Voron Trident</h3>
-        <p>Custom 3D printer derived from the Voron Trident, built for very high speeds, high temperatures, and minimized downtime.</p>
+        <p>A high-performance CoreXY 3D printer derived from the Voron Trident, custom-built for very high speeds, extreme temperatures, and minimized downtime with self-sourced parts and custom electronics.</p>
         <div class="meta"><span class="tag">FDM</span><span class="tag">Klipper</span><span class="tag">CAN</span><span class="tag">CoreXY</span></div>
         <div class="links">
           <a class="button" href="trident.html">Photo Album</a>
@@ -105,10 +361,10 @@
         <figure>
           <img src="https://inaneek.github.io/assets/3D-rendering-preview.png"
                alt="4 rendered cubes"
-               style="aspect-ratio: 1 / 1; object-fit: cover; width: 100%; border-radius: 10px;" />
+               class="img-square" />
         </figure>
         <h3>3D Renderer Engine</h3>
-        <p>From‑scratch software renderer that projects simple 3D objects in a 2D viewport.</p>
+        <p>A from‑scratch software renderer developed in Python that accurately projects simple 3D objects into a 2D viewport.</p>
         <div class="meta"><span class="tag">Python</span><span class="tag">Projection</span><span class="tag">Algorithms</span></div>
         <div class="links"><a class="button" href="https://github.com/iNaneek/3D-Render" target="_blank" rel="noopener">Repository</a></div>
       </article>
@@ -119,7 +375,7 @@
           <img src="https://inaneek.github.io/assets/keygaurd_demo.jpeg" alt="iPad keyguard installed on tablet" loading="lazy" />
         </figure>
         <h3>iPad Touch Keyguard</h3>
-        <p>Accessibility‑focused keyguard to improve AAC device use for students with motor impairment. Designed and 3D‑printed.</p>
+        <p>An accessibility‑focused keyguard designed and 3D‑printed to improve AAC device use for students with severe motor impairment, developed through stakeholder research.</p>
         <div class="meta"><span class="tag">CAD</span><span class="tag">Accessibility</span><span class="tag">Stakeholder Research</span><span class="tag">3D Printing</span></div>
         <div class="links"><a class="button secondary" href="https://cad.onshape.com/documents/8547a39793c62f3c553b7e5e/w/7c3718d41910a9dc11ee6916/e/5a893425bbfc497d52312519" target="_blank" rel="noopener">CAD</a></div>
       </article>
@@ -130,32 +386,31 @@
           <img src="https://inaneek.github.io/assets/hunch/render1.png" alt="HUNCH Lunar Stake render" loading="lazy" />
         </figure>
         <h3>HUNCH — Lunar Stake</h3>
-        <p>NASA HUNCH collaboration: lunar regolith stake, prototyped in ABS and finalized in Aluminum..</p>
+        <p>A NASA HUNCH collaboration project focusing on a lunar regolith anchoring stake, prototyped in ABS and finalized for production in Aluminum, with a focus on DFM and lightweighting.</p>
         <div class="meta"><span class="tag">DFM</span><span class="tag">SLM Additive</span><span class="tag">Lightweighting</span></div>
         <div class="links">
-          <a class="button" href="https://cad.onshape.com/documents/bfdf649752a79b84ad9d1e3d/w/91ce79dc886c36f68a3343f1/e/9705eaeffad63528b82e124d" aria-disabled="true">CAD</a>
+          <a class="button" href="https://cad.onshape.com/documents/bfdf649752a79b84ad9d1e3d/w/91ce79dc886c36f68a3343f1/e/9705eaeffad63528b82e124d" target="_blank" rel="noopener">CAD</a>
           <a class="button secondary" href="https://nasahunch.com/" target="_blank" rel="noopener">NASA Website</a>
         </div>
-        
+
       </article>
 
       <!-- Contact (card) -->
       <article class="card">
         <h3>Contact</h3>
-        <p>Best ways to reach me:</p>
-      
-        <!-- simple lines instead of tags -->
-        <ul class="contact-list" style="list-style:none; padding-left:0; margin:0 0 0.75rem 0;">
+        <p>Feel free to reach out to me through any of the following channels. I'm always open to discussing new projects, collaborations, or innovative ideas.</p>
+
+        <ul class="contact-list">
           <li><strong>Email:</strong> <a href="mailto:keenan_manchester@mines.edu">keenan_manchester@mines.edu</a></li>
           <li><strong>Phone:</strong> <a href="tel:+1-303-999-6160">303 999 6160</a></li>
         </ul>
-      
+
         <div class="links">
           <a class="button" href="https://github.com/iNaneek" target="_blank" rel="noopener">GitHub</a>
-          <a class="button" href="https://github.com/iNaneek/inaneek.github.io/blob/main/assets/Resumes/Keenan-Mancehster-Resume-Accents.pdf" target="_blank" rel="noopener">Resume</a>
           <a class="button" href="https://www.linkedin.com/in/keenan-manchester" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="button secondary" href="https://github.com/iNaneek/inaneek.github.io/blob/main/assets/Resumes/Keenan-Mancehster-Resume-Monotone.pdf" target="_blank" rel="noopener">Monotone Resume</a>
-          <a class="button secondary" href="https://github.com/iNaneek/inaneek.github.io/blob/main/assets/Resumes/Keenan-Mancehster-Resume-Colorful.pdf" target="_blank" rel="noopener">Colorful Resume</a>
+          <a class="button secondary" href="https://github.com/iNaneek/inaneek.github.io/blob/main/assets/Resumes/Keenan-Mancehster-Resume-Accents.pdf" target="_blank" rel="noopener">Resume (Accents)</a>
+          <a class="button secondary" href="https://github.com/iNaneek/inaneek.github.io/blob/main/assets/Resumes/Keenan-Mancehster-Resume-Monotone.pdf" target="_blank" rel="noopener">Resume (Monotone)</a>
+          <a class="button secondary" href="https://github.com/iNaneek/inaneek.github.io/blob/main/assets/Resumes/Keenan-Mancehster-Resume-Colorful.pdf" target="_blank" rel="noopener">Resume (Colorful)</a>
         </div>
       </article>
 
@@ -163,9 +418,11 @@
   </main>
 
   <footer>
-    © <span id="y"></span> Keenan Manchester
-    <div style="margin-top:8px;color:var(--muted);font-size:12px" aria-label="AI assistance notice">
-      This site’s creation was aided by AI.
+    <div class="container">
+      <p>&copy; <span id="y"></span> Keenan Manchester. All rights reserved.</p>
+      <div aria-label="AI assistance notice">
+        This site’s creation was aided by AI.
+      </div>
     </div>
   </footer>
   <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
