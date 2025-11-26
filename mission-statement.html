@@ -4,171 +4,290 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Keenan Manchester — Mission</title>
+
   <style>
-    :root{
+    :root {
       --text: #1f2937;
       --muted: #475569;
       --accent: #7c3aed; /* violet stroke */
       --bg: #ffffff;
     }
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+
+    html, body { height: 100%; }
+
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       background: var(--bg);
       color: var(--text);
     }
+
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 8px 24px; /* reduced top spacing */
-    }
-    .wrap{
-      min-height:100svh;
-      display:grid;
-      grid-template-columns: 1fr 1fr; /* keep the split perfectly centered */
-      align-items:center;
-      gap:4vw;
-    }
-    @media (max-width: 720px){
-      .wrap{grid-template-columns: 1fr;}
-      .art, .content{ text-align:left; justify-self:start; max-width:min(600px, 50vw); }
+      padding: 8px 24px;
     }
 
-    .content{ text-align:left; }
-
-    h1{
-      margin:0 0 1rem;
-      font-weight:800;
-      letter-spacing:-0.02em;
-      font-size:clamp(2.5rem, 6vw, 4rem);
-      line-height:1.1;
+    /* MAIN TITLE SPLIT LAYOUT */
+    .wrap {
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 4vw;
     }
-    .accent{ color:var(--accent); }
 
-    .mission{
-      margin:0;
-      max-width:52ch;
-      font-size:clamp(1rem, 2.5vw, 1.25rem);
-      line-height:1.6;
-      color:var(--muted);
+    @media (max-width: 720px) {
+      .wrap { grid-template-columns: 1fr; }
+      .art, .content {
+        text-align: left;
+        justify-self: start;
+        max-width: min(600px, 50vw);
+      }
     }
-    .mission span{ display:block; }
-    .highlight{ color:var(--accent); font-weight:600; display: inline;}
 
-    /* Nozzle SVG styling */
-    .art{display:flex; align-items:center; justify-content:flex-end; height:100%; justify-self:end;}
-    .v6{height:100%; width:auto; max-height:100%;}
-    .v6-path{
-      fill:none;
-      stroke:var(--accent);
-      stroke-width:6; /* thickened line */
-      stroke-linejoin:round;
-      stroke-linecap:round;
-      stroke-dasharray:1; stroke-dashoffset:1;
-      animation:drawCycle 8s linear infinite;
+    .content { text-align: left; }
+
+    h1 {
+      margin: 0 0 1rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      line-height: 1.1;
     }
-    @keyframes drawCycle{
-      0% { stroke-dashoffset: 0; }
-      10% { stroke-dashoffset: 2; }
+
+    .accent { color: var(--accent); }
+
+    .mission {
+      margin: 0;
+      max-width: 52ch;
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .mission span { display: block; }
+    .highlight { color: var(--accent); font-weight: 600; }
+
+    /* Nozzle styling */
+    .art {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      height: 100%;
+      justify-self: end;
+    }
+
+    .v6 {
+      height: 100%;
+      width: auto;
+      max-height: 100%;
+    }
+
+    .v6-path {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 6;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+      animation: drawCycle 8s linear infinite;
+    }
+
+    @keyframes drawCycle {
+      0%   { stroke-dashoffset: 0; }
+      10%  { stroke-dashoffset: 2; }
       100% { stroke-dashoffset: 2; }
     }
 
-    /* About section styling */
+    /* ABOUT SECTION — now auto-centered by container */
     .about {
+      margin-top: 4rem;
+      padding: 0 24px;
       display: grid;
       grid-template-columns: 1fr 300px;
-      align-items: center;
       gap: 2rem;
-      margin-top: 4rem;
-      max-width: 1200px;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 0 24px;
+      align-items: center;
     }
+
     .about img {
       width: 100%;
-      height: auto;
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
+
     .about h2 {
       font-size: 2rem;
       font-weight: 700;
       margin-bottom: 1rem;
     }
-    .about h2 .accent { color: var(--accent); }
+
     .about p {
       font-size: 1.1rem;
       line-height: 1.7;
       color: var(--muted);
       max-width: 65ch;
     }
-    .footer {
-    text-align: center;
-    font-size: 0.9rem;
-    color: var(--muted);
-    padding: 1.5rem 0;
-    border-top: 1px solid #e5e7eb;
-    width: 100%;
+
+    /* SKILLS SECTION */
+    .skills {
+      margin-top: 6rem;
+      padding: 0 24px;
+      padding-bottom: 4rem; /* space below skills */
     }
+
+    .skills h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;       /* center title */
+      margin-top: 3rem;         /* space above */
+      margin-bottom: 3rem;      /* space below */
+    }
+
+    .skills-grid {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .skill {
+      padding: 1.5rem;
+      border: 1px solid #7c3aed;
+      border-radius: 14px;
+      background: #fdfdfd;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .skill:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(124, 58, 237, 0.25); /* purple glow */
+    border-color: var(--accent);
+    }
+    .skill-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+    .skill h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .skill p {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--muted);
+      padding: 1.5rem 0;
+      border-top: 1px solid #e5e7eb;
+      width: 100%;
+    }
+    .middle-block {
+  min-height: 100vh;            /* fills the screen like the hero */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;      /* centers BOTH sections together */
+  gap: 4rem;                    /* keeps the spacing between them */
+}
   </style>
 </head>
+
 <body>
   <div class="container">
+
     <main class="wrap">
-      <!-- Left: refined V6 nozzle outline, single purple stroke -->
       <div class="art" aria-hidden="true">
-        <svg class="v6" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="V6 nozzle outline">
-          <path class="v6-path" pathLength="1" d="
-            M 160 480
-            L 120 440 L 60 440 L 40 420 L 40 340 L 60 320 L 110 320 L 110 260 L 95 230 L 95 50 L 115 30
-            L 265 30 L 285 50 L 285 230 L 270 260 L 270 320 L 320 320 L 340 340 L 340 420 L 320 440 L 260 440 L 220 480 L 160 480
-          "/>
+        <svg class="v6" viewBox="0 0 400 500">
+          <path class="v6-path" pathLength="1" d="M 160 480 L 120 440 L 60 440 L 40 420 L 40 340 L 60 320 L 110 320 L 110 260 L 95 230 L 95 50 L 115 30
+            L 265 30 L 285 50 L 285 230 L 270 260 L 270 320 L 320 320 L 340 340 L 340 420 L 320 440 L 260 440 L 220 480 Z"/>
         </svg>
       </div>
 
-      <!-- Right: Name + Mission (left aligned) -->
       <div class="content">
         <h1>
           <span>Keenan</span><br/>
           <span class="accent">Manchester</span>
         </h1>
+
         <p class="mission">
-            <span>I’m using my Design Engineering degree to </span>
-            <span class="highlight">advance additive manufacturing</span>
-            <span>and integrate design for manufacturability</span>
-            <span>into product design to improve rapid prototyping</span>
-            <span>and final production in order to improve</span>
-            <span>product performance and production.</span>
+          <span>I’m using my Design Engineering degree to</span>
+          <span class="highlight">advance additive manufacturing</span>
+          <span>and integrate design for manufacturability</span>
+          <span>into product design to improve rapid prototyping</span>
+          <span>and final production in order to improve</span>
+          <span>product performance and production.</span>
         </p>
       </div>
     </main>
-
+    <div class="middle-block">
     <section class="about">
       <div>
         <h2>About <span class="accent">Me</span></h2>
         <p>
-          I’m a Design Engineering student from Colorado School of Mines with a passion for creative problem solving integrating mechanical design, electronics, additive manufacturing and adjacent disciplines. I’ve led multiple personal and group design projects, including 3D printers, recycling devices, and a proprietary RC Rover. These projects developed my engineering skills and demonstrated my ingenuity and perseverance. I’m passionate about the projects I participate in and face each one with an open mindset looking for innovative and intelligent solutions that take advantage of the manufacturing technique. My skills include advanced CAD, DFM, creative iteration, and system integration, supported by strong programming and analysis skills.  
+          I’m a Design Engineering student from Colorado School of Mines with a passion for creative problem solving integrating mechanical design, electronics, additive manufacturing and adjacent disciplines. I’ve led multiple personal and group projects including 3D printers, recycling devices, and a proprietary RC Rover. These projects developed my engineering skills and demonstrated my ingenuity and perseverance.
         </p>
       </div>
-      <img src="https://inaneek.github.io/assets/voronVT/enclosed2.jpeg" alt="Voron 3D printer project" />
+      <img src="https://inaneek.github.io/assets/voronVT/enclosed2.jpeg" alt="Voron 3D printer project">
     </section>
-  </div>
+
+    <section class="skills">
+      <h2>Core <span class="accent">Skills</span></h2>
+      
+      <div class="skills-grid">
+        
+        <a class="skill-link" href="/skills/am-dfm.html">
+        <div class="skill">
+          <h3>Additive Manufacturing</h3>
+          <p>
+            FDM 3D printing design, optimization, slicer optimization, and material selection. Design for addative manufacturing and strength optimiation.
+          </p>
+        </div>
+      </a>
+
+      <a class="skill-link" href="/skills/am-dfm.html">
+        <div class="skill">
+          <h3>Mechanical Design and CAD</h3>
+          <p>
+            Designing functional mechanical systems focusing on reliability, manufacturability, and compatibility. I use Onshape to bring ideas to life.
+          </p>
+        </div>
+      </a>
+      <a class="skill-link" href="/skills/am-dfm.html">
+        <div class="skill">
+          <h3>Systems Integration</h3>
+          <p>
+            Integrating mechanical design, electronics, software, and rapid prototyping to create elegantly integrated system in order to make better final products.
+          </p>
+        </div>
+      </a>
+      </div>
+    </section>
+    </div>
+  </div> <!-- container end -->
 
   <script>
-    function sizeNozzle(){
+    function sizeNozzle() {
       const svg = document.querySelector('.art .v6');
       const content = document.querySelector('.content');
-      if(svg && content){
+      if(svg && content) {
         svg.style.height = content.offsetHeight + 'px';
       }
     }
     window.addEventListener('load', sizeNozzle);
     window.addEventListener('resize', sizeNozzle);
   </script>
+
   <footer class="footer">
     HTML code has some quirks on this page, best viewed on a desktop (not mobile)
   </footer>
+
 </body>
 </html>
