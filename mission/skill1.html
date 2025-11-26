@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Additive Manufacturing — Keenan Manchester</title>
+
+  <style>
+    :root {
+      --text: #1f2937;
+      --muted: #475569;
+      --accent: #7c3aed;
+      --bg: #ffffff;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      line-height: 1.65;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 20px;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 3.5rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: -0.03em;
+      text-align: center;
+    }
+    .accent { color: var(--accent); }
+
+    .tagline {
+      font-size: 1.2rem;
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      max-width: 60ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Hero Image */
+    .hero {
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 3rem;
+    }
+
+    .hero img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Section Title */
+    h2 {
+      font-size: 1.9rem;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    p {
+      max-width: 75ch;
+      margin-bottom: 1.4rem;
+      color: var(--muted);
+    }
+
+    /* Accent line */
+    .bar {
+      width: 80px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 4px;
+      margin: 1.8rem 0;
+    }
+
+    /* Image + Text Rows */
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin: 3rem 0;
+      align-items: center;
+    }
+
+    .row img {
+      width: 100%;
+      border-radius: 14px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+    }
+
+    /* Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0 4rem 0;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+      transition: transform 0.25s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.03);
+    }
+
+    /* Back Button */
+    .back {
+      display: inline-block;
+      margin-top: 3rem;
+      padding: 0.7rem 1.3rem;
+      border-radius: 10px;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      transition: 0.25s ease;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .back:hover {
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+    }
+
+    /* Mobile */
+    @media (max-width: 720px) {
+      .row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>Additive Manufacturing <span class="accent">&amp; DFM</span></h1>
+    <p class="tagline">
+      A visual look at how I use additive manufacturing and design-for-manufacturability to
+      rapidly develop, validate, and refine engineering solutions.
+    </p>
+
+    <!-- HERO IMAGE -->
+    <div class="hero">
+      <img src="assets/am-hero.jpg" alt="Additive manufacturing components">
+    </div>
+
+    <div class="bar"></div>
+
+    <h2>Optimized Functional Prototypes</h2>
+    <div class="row">
+      <img src="assets/am1.jpg" alt="Printed mechanical assemblies">
+      <p>
+        I design functional prototypes with intentional geometry, allowing every printed part
+        to perform structurally, interface cleanly with other components, and align with the
+        manufacturing constraints of rapid prototyping. Print orientation, stress paths,
+        material selection, and tolerance design shape every iteration.
+      </p>
+    </div>
+
+    <h2>Material-Driven Decision Making</h2>
+    <div class="row">
+      <p>
+        I choose materials based on environmental performance, mechanical strength, flexibility,
+        and post-processing needs. From ASA for outdoor durability, to TPU for flexible systems,
+        to PLA for rapid iteration, each project is guided by both engineering requirements and
+        practical manufacturability.
+      </p>
+      <img src="assets/am2.jpg" alt="Materials and filament samples">
+    </div>
+
+    <h2>Print-Aware Geometry</h2>
+    <p>
+      My designs incorporate chamfers, bridging strategies, layer-oriented strength paths,
+      tolerance compensation, and assembly simplification. This ensures each print performs
+      reliably and reduces post-processing or support waste.
+    </p>
+    
+    <!-- IMAGE GALLERY -->
+    <div class="gallery">
+      <img src="assets/am3.jpg" alt="Gallery image 1">
+      <img src="assets/am4.jpg" alt="Gallery image 2">
+      <img src="assets/am5.jpg" alt="Gallery image 3">
+      <img src="assets/am6.jpg" alt="Gallery image 4">
+    </div>
+
+    <h2>From Prototype to Production Thinking</h2>
+    <p>
+      Additive manufacturing accelerates early development, but I design with future production
+      in mind. This includes integrating DFM considerations such as injection molding constraints,
+      machining allowances, fastener strategy, modular design, and ergonomic considerations.
+    </p>
+
+    <a class="back" href="../index.html">← Back to Skills</a>
+
+  </div>
+
+</body>
+</html>
