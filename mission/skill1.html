@@ -46,81 +46,41 @@
       margin-right: auto;
     }
 
-    /* Hero Image */
-    .hero {
-      width: 100%;
-      border-radius: 16px;
-      overflow: hidden;
-      margin-bottom: 3rem;
-    }
-
-    .hero img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    /* Section Title */
-    h2 {
-      font-size: 1.9rem;
-      margin-top: 3rem;
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
-
-    p {
-      max-width: 75ch;
-      margin-bottom: 1.4rem;
-      color: var(--muted);
-    }
-
-    /* Accent line */
+    /* Purple accent line */
     .bar {
       width: 80px;
       height: 4px;
       background: var(--accent);
       border-radius: 4px;
-      margin: 1.8rem 0;
+      margin: 2rem auto 3rem auto;
     }
 
-    /* Image + Text Rows */
-    .row {
+    p {
+      max-width: 80ch;
+      margin-bottom: 1.5rem;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    /* Two-image row */
+    .img-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      margin: 3rem 0;
-      align-items: center;
+      gap: 1.5rem;
+      margin: 2.5rem 0 3.5rem 0;
     }
 
-    .row img {
+    .img-row img {
       width: 100%;
       border-radius: 14px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+      display: block;
     }
 
-    /* Gallery */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin: 2rem 0 4rem 0;
-    }
-
-    .gallery img {
-      width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
-      transition: transform 0.25s ease;
-    }
-
-    .gallery img:hover {
-      transform: scale(1.03);
-    }
-
-    /* Back Button */
+    /* Back button */
     .back {
       display: inline-block;
-      margin-top: 3rem;
+      margin-top: 2.5rem;
       padding: 0.7rem 1.3rem;
       border-radius: 10px;
       border: 2px solid var(--accent);
@@ -136,12 +96,13 @@
       text-decoration: none;
     }
 
-    /* Mobile */
+    /* Mobile layout */
     @media (max-width: 720px) {
-      .row {
+      .img-row {
         grid-template-columns: 1fr;
       }
     }
+
   </style>
 </head>
 
@@ -151,61 +112,39 @@
 
     <h1>Additive Manufacturing <span class="accent">&amp; DFM</span></h1>
     <p class="tagline">
-      A visual look at how I use additive manufacturing and design-for-manufacturability to
-      rapidly develop, validate, and refine engineering solutions.
+      Addative manufacturing is the technology of tomorrow, allowing complex structures with less waste and labor.
+      
     </p>
-
-    <!-- HERO IMAGE -->
-    <div class="hero">
-      <img src="assets/am-hero.jpg" alt="Additive manufacturing components">
-    </div>
 
     <div class="bar"></div>
 
-    <h2>Optimized Functional Prototypes</h2>
-    <div class="row">
-      <img src="assets/am1.jpg" alt="Printed mechanical assemblies">
-      <p>
-        I design functional prototypes with intentional geometry, allowing every printed part
-        to perform structurally, interface cleanly with other components, and align with the
-        manufacturing constraints of rapid prototyping. Print orientation, stress paths,
-        material selection, and tolerance design shape every iteration.
-      </p>
-    </div>
-
-    <h2>Material-Driven Decision Making</h2>
-    <div class="row">
-      <p>
-        I choose materials based on environmental performance, mechanical strength, flexibility,
-        and post-processing needs. From ASA for outdoor durability, to TPU for flexible systems,
-        to PLA for rapid iteration, each project is guided by both engineering requirements and
-        practical manufacturability.
-      </p>
-      <img src="assets/am2.jpg" alt="Materials and filament samples">
-    </div>
-
-    <h2>Print-Aware Geometry</h2>
+    <!-- TEXT BLOCK 1 -->
     <p>
-      My designs incorporate chamfers, bridging strategies, layer-oriented strength paths,
-      tolerance compensation, and assembly simplification. This ensures each print performs
-      reliably and reduces post-processing or support waste.
-    </p>
-    
-    <!-- IMAGE GALLERY -->
-    <div class="gallery">
-      <img src="assets/am3.jpg" alt="Gallery image 1">
-      <img src="assets/am4.jpg" alt="Gallery image 2">
-      <img src="assets/am5.jpg" alt="Gallery image 3">
-      <img src="assets/am6.jpg" alt="Gallery image 4">
-    </div>
-
-    <h2>From Prototype to Production Thinking</h2>
-    <p>
-      Additive manufacturing accelerates early development, but I design with future production
-      in mind. This includes integrating DFM considerations such as injection molding constraints,
-      machining allowances, fastener strategy, modular design, and ergonomic considerations.
+      FDM 3D printer design is at the foundation of understanding of the technology. 
+      Through personal projects with two VORON desktop 3D printers, I have been able to redesign several components to fulfill unique criteria while maintaining valuable aspects of the manufacturing process.
+      Shown below are two toolheads I've designed to incorporate modified toolheads while maintaining all rigidity and functionality.
     </p>
 
+    <!-- IMAGES ROW 1 -->
+    <div class="img-row">
+      <img src="https://inaneek.github.io/mission/ToolHead r1  (revo).png" alt="AM image 1">
+      <img src="https://inaneek.github.io/mission/ToolHead r2 (chube).png" alt="AM image 2">
+    </div>
+
+    <!-- TEXT BLOCK 2 -->
+    <p>
+      I translate my experience in 3D printer design into DFM skills for additive manufacturing. 
+      The design process gives me a very deep understanding of the manufacturing process, which I can apply when designing parts that will be made through additive manufacturing.
+      
+    </p>
+
+    <!-- IMAGES ROW 2 -->
+    <div class="img-row">
+      <img src="https://inaneek.github.io/mission/PET Testing.jpeg" alt="AM image 3">
+      <img src="https://inaneek.github.io/mission/Stake.jpeg" alt="AM image 4">
+    </div>
+
+    <!-- BACK BUTTON -->
     <a class="back" href="./">← Back to Skills</a>
 
   </div>
